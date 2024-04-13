@@ -1,0 +1,37 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34714.143
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Forca", "Forca\Forca.csproj", "{89F6126F-5580-46EF-989C-A388295DD178}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Forca.Dominio", "Forca.Dominio\Forca.Dominio.csproj", "{9144F0E6-1F1A-4795-8A22-5AD280DD9C22}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Forca.Teste", "Forca.Teste\Forca.Teste.csproj", "{CD7AB644-FF73-424D-8E92-8BC7DCB41386}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{89F6126F-5580-46EF-989C-A388295DD178}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{89F6126F-5580-46EF-989C-A388295DD178}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{89F6126F-5580-46EF-989C-A388295DD178}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{89F6126F-5580-46EF-989C-A388295DD178}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9144F0E6-1F1A-4795-8A22-5AD280DD9C22}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9144F0E6-1F1A-4795-8A22-5AD280DD9C22}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9144F0E6-1F1A-4795-8A22-5AD280DD9C22}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9144F0E6-1F1A-4795-8A22-5AD280DD9C22}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CD7AB644-FF73-424D-8E92-8BC7DCB41386}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CD7AB644-FF73-424D-8E92-8BC7DCB41386}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CD7AB644-FF73-424D-8E92-8BC7DCB41386}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CD7AB644-FF73-424D-8E92-8BC7DCB41386}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0CA7B91D-7246-4A6D-A5EE-1FC398FB9C43}
+	EndGlobalSection
+EndGlobal
