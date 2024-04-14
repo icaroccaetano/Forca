@@ -9,6 +9,7 @@ namespace App // Note: actual namespace depends on the project name.
         {
             JogoForca forca = new JogoForca();
             forca.Menu();
+            forca.Jogar();  
         }
     }
 }

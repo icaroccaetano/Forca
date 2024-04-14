@@ -7,13 +7,13 @@ namespace Forca.Dominio
     {
         private int tentativas;
         private String palavra;
-        
+
 
         public void Menu()
         {
             int aux = 0;
             bool ctrl = true;
-            int tema, pos=0;
+            int tema, pos = 0;
             List<String> palavras = new List<String>();
             Random rnd = new Random();
 
@@ -78,29 +78,46 @@ namespace Forca.Dominio
                     palavras.Add(line);
                 }
             }
-            for (int i = 0; i < palavras.Count; i++)
-            {
-                Console.WriteLine(palavras[i]);
-            }
-
-            Console.WriteLine();
-            Console.WriteLine();
 
             ctrl = true;
-
-            while ( ctrl )
+            while (ctrl)
             {
                 pos = rnd.Next(0, palavras.Count);
-                Console.WriteLine("Analisando a linha: " + palavras[pos]);
-                Console.WriteLine(palavras[pos][palavras[pos].Length - 1] + " e " + tema) ;
                 if (palavras[pos][palavras[pos].Length - 1].ToString() == tema.ToString()) ctrl = false;
 
             }
 
-            Console.WriteLine("Passou: " + palavras[pos]);
+            palavra = palavras[pos];
+        }
+
+        public void Jogar ()
+        {
+            String revelacao = "";
+            String usedwords = "";
+            char letra;
+
+            for (int i = 0; palavra[i].ToString() != ";"; i++)
+            {
+                revelacao += "_ ";
+            }
+
+            Console.WriteLine("EXTRA: " + palavra);
+            Console.WriteLine();
+
+            while (tentativas > 1)
+            {
+                Console.WriteLine(revelacao);
+                Console.WriteLine();
+                Console.WriteLine("Erros restantes: " + tentativas);
+
+                Console.WriteLine("Insira uma letra:");
+                letra = char.Parse(Console.ReadLine()); 
+                usedwords += letra;
 
 
-        }  
+
+            }
+        }
 
         private void RetirarTentativa ()
         {
