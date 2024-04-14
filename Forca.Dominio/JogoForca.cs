@@ -6,11 +6,15 @@ namespace Forca.Dominio
     {
         private int tentativas;
         private String palavra;
+        
 
-        public void Menu () 
+        public void Menu()
         {
             int aux = 0;
             bool ctrl = true;
+            int tema, pos=0;
+            List<String> palavras = new List<String>();
+            Random rnd = new Random();
 
             Console.WriteLine("Bem vindo a Forca!");
 
@@ -37,8 +41,9 @@ namespace Forca.Dominio
 
             Console.ForegroundColor = ConsoleColor.White;
             tentativas = aux;
-            
+
             aux = 0;
+            ctrl = true;
 
 
             while (ctrl)
@@ -59,21 +64,34 @@ namespace Forca.Dominio
                 }
             }
 
-            using (var reader = new StreamReader(@"C:\palavras.csv"))
+            tema = aux - 1;
+
+            var csvPath = @"C:\Users\USER\source\repos\Forca\Forca.Dominio\palavras.csv";
+            using (var reader = new StreamReader(csvPath))
             {
-                List<string> listA = new List<string>();
-                List<string> listB = new List<string>();
-                while (!reader.EndOfStream)
+                while (reader.EndOfStream == false)
                 {
                     var line = reader.ReadLine();
-                    var values = line.Split(';');
-
-                    listA.Add(values[1]);
-                    listB.Add(values[0]);
+                    palavras.Add(line);
                 }
             }
+            for (int i = 0; i < palavras.Count; i++)
+            {
+                Console.WriteLine(palavras[i]);
+            }
 
-        }
+            ctrl = true;
+
+            while ( ctrl )
+            {
+                pos = rnd.Next(0, palavras.Count);
+                if (palavras[pos][palavras[pos].Length - 1] == tema) ctrl = false;
+            }
+
+            Console.WriteLine(palavra[pos]);
+
+
+        }  
 
         private void RetirarTentativa ()
         {

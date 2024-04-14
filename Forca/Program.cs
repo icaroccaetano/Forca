@@ -1,2 +1,14 @@
-﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
+﻿using Forca.Dominio;
+using System;
+
+namespace App // Note: actual namespace depends on the project name.
+{
+    internal class Program
+    {
+        static void Main(string[] args)
+        {
+            JogoForca forca = new JogoForca();
+            forca.Menu();
+        }
+    }
+}
