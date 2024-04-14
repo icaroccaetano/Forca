@@ -1,4 +1,5 @@
 ﻿using System.IO;
+using System.Runtime.InteropServices;
 
 namespace Forca.Dominio
 {
@@ -27,6 +28,8 @@ namespace Forca.Dominio
                 Console.WriteLine(" 2 - Normal (6 tentativas)");
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine(" 3 - Dificil (5 tentativas)");
+                Console.ForegroundColor = ConsoleColor.White;
+
 
                 aux = int.Parse(Console.ReadLine());
 
@@ -80,15 +83,21 @@ namespace Forca.Dominio
                 Console.WriteLine(palavras[i]);
             }
 
+            Console.WriteLine();
+            Console.WriteLine();
+
             ctrl = true;
 
             while ( ctrl )
             {
                 pos = rnd.Next(0, palavras.Count);
-                if (palavras[pos][palavras[pos].Length - 1] == tema) ctrl = false;
+                Console.WriteLine("Analisando a linha: " + palavras[pos]);
+                Console.WriteLine(palavras[pos][palavras[pos].Length - 1] + " e " + tema) ;
+                if (palavras[pos][palavras[pos].Length - 1].ToString() == tema.ToString()) ctrl = false;
+
             }
 
-            Console.WriteLine(palavra[pos]);
+            Console.WriteLine("Passou: " + palavras[pos]);
 
 
         }  
