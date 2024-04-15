@@ -95,6 +95,7 @@ namespace Forca.Dominio
             String revelacao = "";
             String usedwords = "";
             char letra;
+            bool ctrl;
 
             for (int i = 0; palavra[i].ToString() != ";"; i++)
             {
@@ -111,9 +112,26 @@ namespace Forca.Dominio
                 Console.WriteLine("Erros restantes: " + tentativas);
 
                 Console.WriteLine("Insira uma letra:");
-                letra = char.Parse(Console.ReadLine()); 
-                usedwords += letra;
+                letra = char.Parse(Console.ReadLine());
 
+                ctrl = true;
+                for (int i = 0; i < usedwords.Length; i++)
+                {
+                    if (usedwords[i] == letra)
+                    {
+                        ctrl = false;
+                        break;
+                    }
+                }
+
+                if (ctrl == true)
+                {
+                    usedwords += letra;
+                }
+                else
+                {
+                    Console.WriteLine("Erro: Letra ja testada");
+                }
 
 
             }
