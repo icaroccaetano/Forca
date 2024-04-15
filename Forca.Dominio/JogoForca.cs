@@ -6,7 +6,8 @@ namespace Forca.Dominio
     public class JogoForca
     {
         private int tentativas;
-        private String palavra;
+        private String palavra = "";
+
 
 
         public void Menu()
@@ -37,8 +38,14 @@ namespace Forca.Dominio
                 Console.WriteLine(" 3 - Dificil (5 tentativas)");
                 Console.ForegroundColor = ConsoleColor.White;
 
-                aux = int.Parse(Console.ReadLine());
+                try
+                {
+                    aux = int.Parse(Console.ReadLine()!);
+                }
+                catch
+                {
 
+                }
                 if (aux == 1 || aux == 2 || aux == 3) ctrl = false; // Testing if the number of attemps entered is valid
                 else
                 {
@@ -68,7 +75,7 @@ namespace Forca.Dominio
                 Console.WriteLine(" 2 - Carros");
                 Console.WriteLine(" 3 - Paises");
 
-                aux = int.Parse(Console.ReadLine());
+                aux = int.Parse(Console.ReadLine()!);
 
                 if (aux == 1 || aux == 2 || aux == 3) ctrl = false; // Testing if the number entered is valid
                 else
@@ -90,12 +97,12 @@ namespace Forca.Dominio
             {
                 while (reader.EndOfStream == false)
                 {
-                    var line = reader.ReadLine();
+                    var line = reader.ReadLine()!;
                     palavras.Add(line);
                 }
             }
 
-            // the list of strings named "palavras" has the word a ";" and the number of the theeme (0, 1 or 2)
+            // the list of strings named "palavras" has the word a ";" and the n5umber of the theeme (0, 1 or 2)
 
             while (ctrl) // choosing a random word
             {
@@ -129,7 +136,7 @@ namespace Forca.Dominio
                 Console.WriteLine("Erros restantes: " + tentativas);
 
                 Console.WriteLine("Insira uma letra:");
-                letra = char.Parse(Console.ReadLine());
+                letra = char.Parse(Console.ReadLine()!);
 
                 ctrl = true;
                 for (int i = 0; i < usedwords.Length; i++)
