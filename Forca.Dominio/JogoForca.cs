@@ -1,12 +1,16 @@
-﻿using System.IO;
+﻿using System.Diagnostics.Metrics;
+using System.Globalization;
+using System.IO;
 using System.Runtime.InteropServices;
+using System.Text;
+using static System.Runtime.InteropServices.JavaScript.JSType;
 
 namespace Forca.Dominio
 {
     public class JogoForca
     {
         private int tentativas;
-        private String palavra = "";
+        private System.String palavra = "";
 
 
 
@@ -16,8 +20,8 @@ namespace Forca.Dominio
             bool ctrl = true; // aux to whiles
             int tema; // theeme choosen 
             int pos = 0; // we will use to run inside strings
-            List<String> palavras = new List<String>(); // where will we store the words of the csv file
-            Random rnd = new Random(); // used to pick a random word
+            List<System.String> palavras = []; // where will we store the words of the csv file
+            Random rnd = new (); // used to pick a random word
 
             Console.WriteLine("Bem vindo a Forca!");
 
@@ -55,7 +59,7 @@ namespace Forca.Dominio
                 }
             }
 
-            tentativas = aux; // Assigning the value to the attribute
+            tentativas = (8 - aux); // Assigning the value to the attribute
 
             // resetting the auxiliares
             aux = 0;
@@ -89,7 +93,6 @@ namespace Forca.Dominio
             tema = aux - 1; // Assigning the value to the attribute (-1 because in the csv file movie is 0, 6cars 1 and countries 2)
 
             // resetting the auxiliares
-            aux = 0;
             ctrl = true;
 
             var csvPath = @"C:\Users\USER\source\repos\Forca\Forca.Dominio\palavras.csv"; // reading the csv file and adding the infos into a list
@@ -107,7 +110,7 @@ namespace Forca.Dominio
             while (ctrl) // choosing a random word
             {
                 pos = rnd.Next(0, palavras.Count);
-                if (palavras[pos][palavras[pos].Length - 1].ToString() == tema.ToString()) ctrl = false; // if the randon word has the samen theeme choosen we go out of the loop
+                if (palavras[pos][^1].ToString() == tema.ToString()) ctrl = false; // if the randon word has the samen theeme choosen we go out of the loop
 
             }
 
@@ -116,20 +119,18 @@ namespace Forca.Dominio
 
         public void Jogar ()
         {
-            String revelacao = "";
-            String usedwords = "";
+            System.String revelacao = ""; // the word of the game
+            List<char> usedletters = []; // store in a char list which letters have already been used
             char letra;
             bool ctrl;
+            int aux = 0;
 
-            for (int i = 0; palavra[i].ToString() != ";"; i++)
+            for (int i = 0; palavra[i].ToString() != ";"; i++) // the word of the games starts just with underlines
             {
                 revelacao += "_ ";
             }
 
-            Console.WriteLine("EXTRA: " + palavra);
-            Console.WriteLine();
-
-            while (tentativas > 1)
+            while (tentativas >= 1) // the game working, only end when the user win or the tentatives go to 0
             {
                 Console.WriteLine(revelacao);
                 Console.WriteLine();
@@ -139,31 +140,88 @@ namespace Forca.Dominio
                 letra = char.Parse(Console.ReadLine()!);
 
                 ctrl = true;
-                for (int i = 0; i < usedwords.Length; i++)
+                for (int i = 0; i < usedletters.Count; i++) // It will test if the letter has already been tested
                 {
-                    if (usedwords[i] == letra)
+                    if (usedletters[i] == letra)
                     {
                         ctrl = false;
                         break;
                     }
                 }
 
-                if (ctrl == true)
+                if (ctrl == true) //the letter hasn't been used so lets see if it has in the word
                 {
-                    usedwords += letra;
+                    bool ctrl2 = false; ;
+                    usedletters.Add(letra); //add to used letters
+
+                    for (int i = 0; palavra[i].ToString() != ";"; i++) // covering the entire word
+                    {
+                        if (letra.ToString().Equals(palavra[i].ToString(), StringComparison.CurrentCultureIgnoreCase)) // if the letter is the same of the word[i]
+                        {
+                            ctrl2 = true;
+                            // Now changing the underline by the letter
+                            revelacao = "";
+                            for (int j = 0; palavra[j].ToString() != ";"; j++) 
+                            {
+                                bool ctrl3 = true;
+                                for (int k = 0; k < usedletters.Count; k++)
+                                    if (usedletters[k].ToString().Equals(palavra[j].ToString(), StringComparison.CurrentCultureIgnoreCase)) // if the letter is the same of the word[j]
+                                    {
+                                        revelacao += usedletters[k];
+                                        ctrl3 = false;
+                                    }
+                                if(ctrl3)
+                                {
+                                    revelacao += "_";
+                                }
+                                revelacao += " ";
+                            }                            
+                        }
+                    }
+                    if (ctrl2 == false) // if the letter is not the same as any position in the word
+                    {
+                        Console.WriteLine("Letra inexistente");
+                        tentativas--;
+                    }
                 }
-                else
+                else // if the letter has been already used go to the beggining of the loop again
                 {
                     Console.WriteLine("Erro: Letra ja testada");
                 }
-
-
+                aux = 0;
+                for (int i = 0; i < revelacao.Length; i++)
+                {
+                    if (revelacao[i].ToString() == "_")
+                        aux++;
+                }
+                if (aux == 0) tentativas = -1;
             }
-        }
+            for (int i = 0; i < revelacao.Length; i++)
+            {
+                if (revelacao[i].ToString() == "_")
+                    aux++;
+            }
+            if (aux == 0)
+            {
+                for (int i = 0; palavra[i].ToString() == "_"; i++)
+                {
+                    Console.Write(palavra[i]);
 
-        private void RetirarTentativa ()
-        {
-            tentativas--;
+                }
+                Console.WriteLine();
+                Console.WriteLine("Parabéns! Venceu!!");
+            }
+            else
+            {
+                Console.WriteLine("Fim das tentativas. Tente novamente!");
+                Console.Write("Palavra: ");
+                for (int i = 0; palavra[i].ToString() != ";"; i++)
+                {
+                    Console.Write(palavra[i]);
+
+                }
+                Console.WriteLine();
+            }
         }
     }
 }
