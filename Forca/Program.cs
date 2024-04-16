@@ -7,7 +7,7 @@ namespace App // Note: actual namespace depends on the project name.
     {
         static void Main(string[] args)
         {
-            JogoForca forca = new JogoForca();
+            JogoForca forca = new ();
             forca.Menu();
             forca.Jogar();  
         }
