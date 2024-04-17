@@ -23,4 +23,4 @@ When you lose all your attempts, the program inform the word and ends.
 ![image](https://github.com/icaroccaetano/Forca/assets/84483036/bb20aa66-6819-48d8-8bec-2d056211a2fb)
 
 # About
-Uses a .csv file to save the words to be used by the program. The archive is inside the Forca.Dominio paste. 
+It uses a .csv file to save the words used by the program. The file is inside the Forca.Dominio paste. 
