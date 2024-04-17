@@ -22,5 +22,16 @@ When you lose all your attempts, the program inform the word and ends.
 
 ![image](https://github.com/icaroccaetano/Forca/assets/84483036/bb20aa66-6819-48d8-8bec-2d056211a2fb)
 
+# Next steps
+
+Fell free to commit and help with next steps!
+
+  - Exception treatment
+  - Accent uses
+
+After I will start the front of the project. Continuing my studies
+
 # About
 It uses a .csv file to save the words used by the program. The file is inside the Forca.Dominio paste. 
+
+The idea for this project was taken from an introductory C# repository -> https://github.com/Wurthma/CSharp-Iniciantes
