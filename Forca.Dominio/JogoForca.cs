@@ -181,12 +181,14 @@ namespace Forca.Dominio
                     if (ctrl2 == false) // if the letter is not the same as any position in the word
                     {
                         Console.WriteLine("Letra inexistente");
+                        Console.WriteLine();
                         tentativas--;
                     }
                 }
                 else // if the letter has been already used go to the beggining of the loop again
                 {
                     Console.WriteLine("Erro: Letra ja testada");
+                    Console.WriteLine();
                 }
                 aux = 0;
                 for (int i = 0; i < revelacao.Length; i++)
@@ -203,7 +205,7 @@ namespace Forca.Dominio
             }
             if (aux == 0)
             {
-                for (int i = 0; palavra[i].ToString() == "_"; i++)
+                for (int i = 0; palavra[i].ToString() != ";"; i++)
                 {
                     Console.Write(palavra[i]);
 
