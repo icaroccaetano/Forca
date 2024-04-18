@@ -92,9 +92,6 @@ namespace Forca.Dominio
 
             tema = aux - 1; // Assigning the value to the attribute (-1 because in the csv file movie is 0, 6cars 1 and countries 2)
 
-            // resetting the auxiliares
-            ctrl = true;
-
             var currentDirectory = Directory.GetCurrentDirectory();
             var csvPath = $@"{currentDirectory}\..\..\..\..\Forca.Dominio\palavras.csv"; // reading the csv file and adding the infos into a list
             using (var reader = new StreamReader(csvPath)) 
@@ -107,7 +104,7 @@ namespace Forca.Dominio
             }
 
             // the list of strings named "palavras" has the word a ";" and the n5umber of the theeme (0, 1 or 2)
-
+            ctrl = true;
             while (ctrl) // choosing a random word
             {
                 pos = rnd.Next(0, palavras.Count);
