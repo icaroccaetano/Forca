@@ -95,7 +95,8 @@ namespace Forca.Dominio
             // resetting the auxiliares
             ctrl = true;
 
-            var csvPath = @"C:\Users\USER\source\repos\Forca\Forca.Dominio\palavras.csv"; // reading the csv file and adding the infos into a list
+            var currentDirectory = Directory.GetCurrentDirectory();
+            var csvPath = $@"{currentDirectory}\..\..\..\..\Forca.Dominio\palavras.csv"; // reading the csv file and adding the infos into a list
             using (var reader = new StreamReader(csvPath)) 
             {
                 while (reader.EndOfStream == false)
